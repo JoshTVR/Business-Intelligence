@@ -1,0 +1,20 @@
+
+services:
+  sqlserverBI:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserverBI
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=P@ssw0rd
+    ports:
+      - "1422:1433"
+    volumes:
+      # Volumen externo administrado por Docker
+      - sqlserver-volume:/var/opt/mssql
+      # Bind volume hacia carpeta local de Windows
+      - "C:\\proyectodatawarehouse\\datasource:/var/opt/mssql/datasets"
+    restart: always
+
+volumes:
+  sqlserver-volume:
+    external: true
