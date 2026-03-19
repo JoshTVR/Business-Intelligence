@@ -1,0 +1,756 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/2/2025 7:46:48 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ROKOVZKY"
+  DTS:CreatorName="ROKOVZKY\joshtvr"
+  DTS:DTSID="{740363AF-0B46-40CE-8F8D-5252FF230DAF}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="FactSales"
+  DTS:PackageType="5"
+  DTS:VersionBuild="23"
+  DTS:VersionGUID="{D4552936-7869-4965-821D-FAC20B0CA1DC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[.,1422.Datamart_Northwind.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{19A4C86C-0E5B-4510-8ACC-0B8FAC675E95}"
+      DTS:ObjectName=".,1422.Datamart_Northwind.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.,1422;User ID=sa;Initial Catalog=Datamart_Northwind;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-FactSales-{19A4C86C-0E5B-4510-8ACC-0B8FAC675E95}.,1422.Datamart_Northwind.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZ5ip12zivEKJjTLpBIen0QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAABe7YkSmAgAfk8rsoH9dNKkhpj1JrfVBqlsX6HQmjht5gAAAAAOgAAAAAIAACAAAAA1PPCZowdls98XnVVcWJpF2Bu0uORDx2dW6X1IiBQK3iAAAABT3QneYOsxXM8rGyB+oPyO/amriOziTbW9539bj3eJCEAAAACByqaffYSVw8wjyE4EwJaWq8PN+vS74PUCtObDJVsWFf6sS8aG958yu9mnqbze54bhC4E/++FKTJjT7vNwHaEx</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[.,1422.Stage_Northwind.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CC9985A4-D426-49CA-872A-C60AE0568DBF}"
+      DTS:ObjectName=".,1422.Stage_Northwind.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.,1422;User ID=sa;Initial Catalog=Stage_Northwind;Provider=MSOLEDBSQL.1;Persist Security Info=True;Application Name=SSIS-FactSales-{CC9985A4-D426-49CA-872A-C60AE0568DBF}.,1422.Stage_Northwind.sa;Auto Translate=False;">
+          <DTS:Password
+            DTS:Name="Password"
+            Sensitive="1"
+            Encrypted="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAZ5ip12zivEKJjTLpBIen0QAAAAAIAAAARABUAFMAAAAQZgAAAAEAACAAAACDe1uPytQKNJjocSd8esBq2/CnKaaIO3wk9TU8160DqQAAAAAOgAAAAAIAACAAAADIciuCduYJ0sJ6MPZpTlRFzvsJswlRczwAgJiS7QWsjCAAAAALaetgtMLulKNMUxdt09mop6tzQNVpzhjFIDEftel0g0AAAAAWE1R2DixMkw3Q1U+1vs52BZX0oaDcw7hv+oU1ksLorbLW4rbpkYvUtSdV7mWryed90rsxEijfL9gGq6bp78wV</DTS:Password>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1C18245E-8BD3-40CA-8683-F2B9FF36CC07}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="MaximaFecha">
+      <DTS:VariableValue
+        DTS:DataType="7">12/5/2025 10:37:10 AM</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DF Dim Sales"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F94D58A4-E8F2-45BD-A294-BCE883E13F83}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DF Dim Sales"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DF Dim Sales\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[fact_sales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Dim Sales\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[.,1422.Datamart_Northwind.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[.,1422.Datamart_Northwind.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[order_date_key]"
+                      cachedDataType="i4"
+                      cachedName="order_date_key"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_date_key]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[order_date_key]" />
+                    <inputColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[customer_key]"
+                      cachedDataType="i4"
+                      cachedName="customer_key"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_key]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[customer_key]" />
+                    <inputColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[product_key]"
+                      cachedDataType="i4"
+                      cachedName="product_key"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_key]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_key]" />
+                    <inputColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[employee_key]"
+                      cachedDataType="i4"
+                      cachedName="employee_key"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[employee_key]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_key]" />
+                    <inputColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[shipper_key]"
+                      cachedDataType="i4"
+                      cachedName="shipper_key"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[shipper_key]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[shipper_key]" />
+                    <inputColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ventas_NOrden]"
+                      cachedDataType="i4"
+                      cachedName="Ventas_NOrden"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_number]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_NOrden]" />
+                    <inputColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ventas_Unidades]"
+                      cachedDataType="i4"
+                      cachedName="Ventas_Unidades"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_qty]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_Unidades]" />
+                    <inputColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ventas_PUnitario]"
+                      cachedDataType="numeric"
+                      cachedName="Ventas_PUnitario"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_PUnitario]" />
+                    <inputColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Ventas_Descuento]"
+                      cachedDataType="numeric"
+                      cachedName="Ventas_Descuento"
+                      cachedPrecision="15"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[discount]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_Descuento]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[fact_sales_key]"
+                      dataType="i8"
+                      name="fact_sales_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_date_key]"
+                      dataType="i4"
+                      name="order_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_key]"
+                      dataType="i4"
+                      name="customer_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_key]"
+                      dataType="i4"
+                      name="product_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[employee_key]"
+                      dataType="i4"
+                      name="employee_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[shipper_key]"
+                      dataType="i4"
+                      name="shipper_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_number]"
+                      dataType="i4"
+                      name="order_number" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_qty]"
+                      dataType="i4"
+                      name="order_qty" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
+                      dataType="numeric"
+                      name="unit_price"
+                      precision="19"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[discount]"
+                      dataType="numeric"
+                      name="discount"
+                      precision="5"
+                      scale="4" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[extended_amount]"
+                      dataType="numeric"
+                      name="extended_amount"
+                      precision="19"
+                      scale="4" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DF Dim Sales\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Dim Sales\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Dim Sales\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DF Dim Sales\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+      dd.date_key                         AS order_date_key
+    , dc.customer_key
+    , dp.product_key
+    , de.employee_key
+    , ds.shipper_key
+    , sv.[Ventas_NOrden]
+    , sv.[Ventas_Unidades]
+    , sv.[Ventas_PUnitario]
+    , sv.[Ventas_Descuento]
+FROM [STAGE_NORTHWIND].[dbo].[Stage_Ventas] AS sv
+JOIN [Datamart_Northwind].dbo.dim_customer AS dc
+    ON  sv.Cliente_Codigo      = dc.customerid_nk
+    AND sv.Ventas_OrderDate    &gt;= dc.start_date
+    AND sv.Ventas_OrderDate    &lt;  ISNULL(dc.end_date, '9999-12-31')   -- SCD2: versión vigente en la fecha de la venta
+JOIN Datamart_Northwind.[dbo].[dim_employee] AS de
+    ON sv.Empleado_Codigo      = de.employeeid_nk
+JOIN Datamart_Northwind.[dbo].[dim_producto] AS dp
+    ON sv.Producto_Codigo      = dp.productid_nk
+JOIN [Datamart_Northwind].[dbo].[dim_date] AS dd
+    ON dd.[date]               = sv.Ventas_OrderDate
+JOIN Datamart_Northwind.dbo.dim_shipper AS ds
+    ON ds.shipperid_nk         = sv.Transportista_codigo
+WHERE sv.Ventas_OrderDate &gt; ?
+ORDER BY 
+      dc.customer_key
+    , de.employee_key
+    , dp.product_key
+    , ds.shipper_key
+    , dd.date_key
+    , sv.Ventas_NOrden;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping">"0:Input",{1C18245E-8BD3-40CA-8683-F2B9FF36CC07};</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DF Dim Sales\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[.,1422.Stage_Northwind.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[.,1422.Stage_Northwind.sa]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[order_date_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[order_date_key]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[order_date_key]"
+                      name="order_date_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[customer_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[customer_key]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[customer_key]"
+                      name="customer_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_key]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[product_key]"
+                      name="product_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_key]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[employee_key]"
+                      name="employee_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[shipper_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipper_key]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[shipper_key]"
+                      name="shipper_key"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_NOrden]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ventas_NOrden]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_NOrden]"
+                      name="Ventas_NOrden"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_Unidades]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ventas_Unidades]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_Unidades]"
+                      name="Ventas_Unidades"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_PUnitario]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ventas_PUnitario]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_PUnitario]"
+                      name="Ventas_PUnitario"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_Descuento]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ventas_Descuento]"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].Columns[Ventas_Descuento]"
+                      name="Ventas_Descuento"
+                      precision="15"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[order_date_key]"
+                      dataType="i4"
+                      name="order_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[customer_key]"
+                      dataType="i4"
+                      name="customer_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_key]"
+                      dataType="i4"
+                      name="product_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_key]"
+                      dataType="i4"
+                      name="employee_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipper_key]"
+                      dataType="i4"
+                      name="shipper_key" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ventas_NOrden]"
+                      dataType="i4"
+                      name="Ventas_NOrden" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ventas_Unidades]"
+                      dataType="i4"
+                      name="Ventas_Unidades" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ventas_PUnitario]"
+                      dataType="numeric"
+                      name="Ventas_PUnitario"
+                      precision="15"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Ventas_Descuento]"
+                      dataType="numeric"
+                      name="Ventas_Descuento"
+                      precision="15"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[order_date_key]"
+                      dataType="i4"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[order_date_key]"
+                      name="order_date_key" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customer_key]"
+                      dataType="i4"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[customer_key]"
+                      name="customer_key" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_key]"
+                      dataType="i4"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[product_key]"
+                      name="product_key" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_key]"
+                      dataType="i4"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[employee_key]"
+                      name="employee_key" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[shipper_key]"
+                      dataType="i4"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[shipper_key]"
+                      name="shipper_key" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ventas_NOrden]"
+                      dataType="i4"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ventas_NOrden]"
+                      name="Ventas_NOrden" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ventas_Unidades]"
+                      dataType="i4"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ventas_Unidades]"
+                      name="Ventas_Unidades" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ventas_PUnitario]"
+                      dataType="numeric"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ventas_PUnitario]"
+                      name="Ventas_PUnitario"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ventas_Descuento]"
+                      dataType="numeric"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Ventas_Descuento]"
+                      name="Ventas_Descuento"
+                      precision="15"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DF Dim Sales.Paths[OLE DB Source Output]"
+              endId="Package\DF Dim Sales\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\DF Dim Sales\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{07F9D279-D40D-4339-93A5-4CE699AA4020}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{19A4C86C-0E5B-4510-8ACC-0B8FAC675E95}"
+          SQLTask:SqlStatementSource="(SELECT COALESCE(MAX(d.date), '19000101')&#xA;       FROM Datamart_Northwind.dbo.fact_sales as fs&#xA;       JOIN Datamart_Northwind.dbo.dim_date as d ON fs.order_date_key = d.date_key)"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::MaximaFecha" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{927A05A5-3E2D-4FEC-9726-63A50AF8BD42}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DF Dim Sales" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\DF Dim Sales"
+          TopLeft="272.499985111258,188.066665358874" />
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="234.166653872365,46.7999996745586" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="316.566653872365,88.3999996745586">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27.133331238893,99.6666656843154"
+              Start="0,0"
+              End="27.133331238893,92.1666656843154">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.8333328421577" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.8333328421577"
+                    Point2="0,49.8333328421577"
+                    Point3="4,49.8333328421577" />
+                  <mssgle:LineSegment
+                    End="23.133331238893,49.8333328421577" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.133331238893,49.8333328421577"
+                    Point2="27.133331238893,49.8333328421577"
+                    Point3="27.133331238893,53.8333328421577" />
+                  <mssgle:LineSegment
+                    End="27.133331238893,92.1666656843154" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DF Dim Sales">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\DF Dim Sales\OLE DB Source"
+          TopLeft="314.166649501358,49.3999996564786" />
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\DF Dim Sales\OLE DB Destination"
+          TopLeft="384.166645676726,187.199998698235" />
+        <EdgeLayout
+          Id="Package\DF Dim Sales.Paths[OLE DB Source Output]"
+          TopLeft="390.166649501358,90.9999996564786">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="79.5999961753679,96.1999990417564"
+              Start="0,0"
+              End="79.5999961753679,88.6999990417564">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.0999995208782" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.0999995208782"
+                    Point2="0,48.0999995208782"
+                    Point3="4,48.0999995208782" />
+                  <mssgle:LineSegment
+                    End="75.5999961753679,48.0999995208782" />
+                  <mssgle:CubicBezierSegment
+                    Point1="75.5999961753679,48.0999995208782"
+                    Point2="79.5999961753679,48.0999995208782"
+                    Point3="79.5999961753679,52.0999995208782" />
+                  <mssgle:LineSegment
+                    End="79.5999961753679,88.6999990417564" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Dim Sales\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DF Dim Sales\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

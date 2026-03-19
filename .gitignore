@@ -1,0 +1,11 @@
+# Visual Studio IDE cache
+.vs/
+*.suo
+*.user
+
+# SSIS build artifacts
+bin/
+obj/
+
+# Compiled SSIS packages (binaries)
+*.ispac

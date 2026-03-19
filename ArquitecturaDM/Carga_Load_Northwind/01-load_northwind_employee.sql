@@ -1,3 +1,7 @@
+use Load_Northwind
+go
+
+select * from Employees
 -- CREAR LA TABLA EMPLOYEES
 CREATE TABLE [dbo].[Employees](
 	[EmployeeID] [int] NOT NULL,
@@ -36,7 +40,7 @@ FROM [Northwind_Metadata].dbo.ETLExecution;
 -- INSERTAR REGISTROS EN LA TABLA ETLEXECUTION
 
 INSERT INTO ETLExecution (UserName, MachineName, PackageName, ETLLoad)
-VALUES (?,?,?,GETDATE())
+VALUES (?,?,?,GETDATE());
 
 -- Seleccionar el ultimo ID
 SELECT TOP 1 ID FROM ETLExecution

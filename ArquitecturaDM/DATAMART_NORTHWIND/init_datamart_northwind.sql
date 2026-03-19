@@ -37,7 +37,7 @@ GO
 
 IF OBJECT_ID ('dim_product') IS NULL
 BEGIN
-CREATE TABLE dim_producto(
+CREATE TABLE dim_product(
     product_key INT IDENTITY(1,1) PRIMARY KEY, 
     productid_nk INT NOT NULL, 
     product_name NVARCHAR(40) NOT NULL, 
@@ -109,7 +109,7 @@ IF OBJECT_ID('dim_supplier') IS NULL
     BEGIN
         CREATE TABLE dim_supplier (
             supplier_key          INT IDENTITY(1,1) PRIMARY KEY, 
-            supplierid_nk         NVARCHAR(10) NOT NULL, -- clave natural (source)
+            supplierid_nk         INT NOT NULL, -- clave natural (source)
             company_name          NVARCHAR(40) NOT NULL,
             contact_name          NVARCHAR(30) NULL, 
             contact_title         NVARCHAR(30) NULL,
@@ -126,42 +126,8 @@ IF OBJECT_ID('dim_supplier') IS NULL
 GO
 
 /* =================================
-   5) fact_sales (grano: linea de pedido (pedido - producto))
-   =================================*/ 
-
-IF OBJECT_ID ('fact_sales') IS NULL
-BEGIN
-CREATE TABLE fact_sales(
-
-    fact_sales_key BIGINT IDENTITY(1,1) PRIMARY KEY,
-     
-    -- Dimensiones
-    order_date_key     INT NOT NULL,
-    customer_key       INT NOT NULL, 
-    product_key        INT NOT NULL, 
-    employee_key       INT NOT NULL, 
-    shipper_key        INT NOT NULL, 
-    order_number       INT NOT NULL,    --- orderID
-
-    -- Medidas
-    order_qty    INT NOT NULL, 
-    unit_price   DECIMAL(19,4) NOT NULL, 
-    discount     DECIMAL(5,4) NOT NULL, -- [0...1] 
-    extended_amount AS (CAST(order_qty * unit_price * (1 - discount) AS DECIMAL(19,4))) PERSISTED,
-
-    -- checks
-    CONSTRAINT chk_fact_sales_qty_positive CHECK (order_qty > 0), 
-    CONSTRAINT chk_fact_sales_price_positive CHECK (unit_price > 0)
-    CONSTRAINT chk_fact_sales_dicount_01 CHECK (discount >= 0 and discount <=1)
-
-);
-END
-GO
-
-
-/* =================================
-   5) fact_sales (grano: linea de pedido (pedido - producto))
-   =================================*/ 
+   7) fact_sales (grano: linea de pedido (pedido - producto))
+   =================================*/
 
 IF OBJECT_ID ('fact_sales') IS NULL
 BEGIN
@@ -186,7 +152,7 @@ CREATE TABLE fact_sales(
 
     -- checks
     CONSTRAINT chk_fact_sales_qty_positive CHECK (order_qty > 0), 
-    CONSTRAINT chk_fact_sales_price_positive CHECK (unit_price > 0)
+    CONSTRAINT chk_fact_sales_price_positive CHECK (unit_price > 0),
     CONSTRAINT chk_fact_sales_dicount_01 CHECK (discount >= 0 and discount <=1)
 
 );
