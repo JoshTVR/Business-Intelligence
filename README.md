@@ -1,77 +1,85 @@
-# INTELIGENCIA DE NEGOCIOS - Proyecto Northwind
+<div align="center">
 
-Proyecto completo de **Business Intelligence** construido sobre la base de datos Northwind, siguiendo la **metodología Kimball** (modelado dimensional en estrella). Cubre desde la configuración del entorno hasta la visualización final en Power BI.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f766e,50:0891b2,100:2563eb&height=180&section=header&text=Business%20Intelligence&fontSize=46&fontAlignY=38&animation=fadeIn&desc=Kimball%20DM%20·%20ETL%20Pipeline%20·%20Power%20BI%20·%20SQL%20Server%20+%20PostgreSQL&descAlignY=60&descSize=14&fontColor=ffffff"/>
 
-> Para la documentación técnica completa ver [DOCS.md](DOCS.md)
+<br/>
 
-![Inteligencia de Negocios](./img/BI.jpg)
+[![SQL Server](https://img.shields.io/badge/SQL%20Server-T--SQL-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white)](https://learn.microsoft.com/en-us/sql/sql-server)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Docker-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://postgresql.org)
+[![Power BI](https://img.shields.io/badge/Power%20BI-Dashboards-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)](https://powerbi.microsoft.com)
+[![Docker](https://img.shields.io/badge/Docker-Containers-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://docker.com)
 
----
-
-## ¿Qué hace este proyecto?
-
-Toma la base de datos **NORTHWND** (base de datos de ventas de ejemplo de Microsoft) como fuente y construye un **Datamart de Ventas** que permite analizar ventas por cliente, producto, empleado, transportista y fecha.
-
-```
-[NORTHWND]  ──►  [Load_Northwind]  ──►  [Stage_Northwind]  ──►  [Datamart_Northwind]  ──►  [Power BI]
-  Fuente          Capa de aterrizaje      Transformación          Modelo estrella           Dashboard
-```
+</div>
 
 ---
 
-## Herramientas
+## About
 
-| Categoría | Herramienta |
-|---|---|
-| Base de Datos | Microsoft SQL Server 2022 |
-| Base de Datos | PostgreSQL 15 |
-| ETL | SQL Server Integration Services (SSIS) |
-| Visualización | Microsoft Power BI |
-| Contenedores | Docker Desktop / Docker Compose |
+A complete **Business Intelligence solution** built on the classic Northwind database.
+
+This project implements dimensional modeling using **Kimball's methodology** — from raw OLTP data to a full data warehouse with star schema, ETL pipeline, and interactive Power BI dashboards. Built as an end-to-end BI project covering architecture, transformation, and visualization.
 
 ---
 
-## Estructura del Repositorio
+## What's Inside
+
+| Folder                    | Description                                         |
+| ------------------------- | --------------------------------------------------- |
+| `ProyectoETL_DM_Kimball/` | Full ETL pipeline + dimensional model (star schema) |
+| `PowerBi/`                | Power BI dashboard files (.pbix)                    |
+| `ArquitecturaDM/`         | Data mart architecture diagrams                     |
+| `topicosSQL/`             | T-SQL examples and advanced topics                  |
+| `sgbd-docker/`            | Docker setup for SQL Server + PostgreSQL            |
+| `DOCS.md`                 | Full technical documentation                        |
+
+---
+
+## Tech Stack
+
+<div align="center">
+
+[![SQL Server](https://skillicons.dev/icons?i=sqlserver)](https://learn.microsoft.com/en-us/sql/sql-server)
+[![PostgreSQL](https://skillicons.dev/icons?i=postgres)](https://postgresql.org)
+[![Docker](https://skillicons.dev/icons?i=docker)](https://docker.com)
+
+</div>
+
+**Additional tools:** Power BI Desktop · SQL Server Integration Services (SSIS) · Azure Data Studio
+
+---
+
+## Architecture
 
 ```
-inteligenciax/
-├── ArquitecturaDM/               # Scripts SQL: creación de BDs, tablas y carga ETL
-│   ├── init_database.sql         # Crea las 4 bases de datos
-│   ├── DATAMART_NORTHWIND/       # DDL del modelo dimensional (dims + fact)
-│   ├── Carga_Load_Northwind/     # Scripts de referencia para la capa Load
-│   ├── Preparativo_datamart/     # Crea la BD de metadata ETL
-│   └── scriptfactventas.sql      # Pipeline ETL completo (DDL + DML)
-├── ProyectoETL_DM_Kimball/       # Paquetes SSIS
-│   ├── Stage_Nortwind/           # Proyecto 1: carga a Stage (versión inicial)
-│   ├── Datamart_Nortwind/        # Proyecto 2: carga al Datamart (versión media)
-│   └── DatamartNorthwind/        # Proyecto 3: pipeline completo (versión final)
-├── PowerBi/                      # Reporte Power BI (.pbix)
-├── sgbd-docker/                  # Docker Compose para SQL Server y PostgreSQL
-│   ├── sqlserver/
-│   └── postgres/
-└── topicosSQL/                   # Material de estudio T-SQL (independiente del proyecto)
+OLTP Source (Northwind)
+        ↓
+   ETL Pipeline (SSIS / T-SQL)
+        ↓
+  Data Warehouse (Star Schema / Kimball)
+   ├── Fact tables
+   └── Dimension tables (DimCliente, DimProducto, DimTiempo…)
+        ↓
+  Power BI Dashboards
 ```
 
 ---
 
-## Inicio Rápido
+## Local Setup
 
-**1. Levantar SQL Server**
+### Run databases with Docker
+
 ```bash
-docker volume create sqlserver-volume
-docker compose -f sgbd-docker/sqlserver/docker-compose.yaml up -d
+git clone https://github.com/JoshTVR/Business-Intelligence.git
+cd Business-Intelligence/sgbd-docker
+docker-compose up -d
 ```
 
-**2. Ejecutar los scripts en orden**
-```
-1. ArquitecturaDM/init_database.sql
-2. ArquitecturaDM/Preparativo_datamart/Script_Northwind_Metadata.sql
-3. ArquitecturaDM/DATAMART_NORTHWIND/init_datamart_northwind.sql
-4. ArquitecturaDM/scriptfactventas.sql  (secciones DDL)
-```
+Then follow the setup guide in `instalacion-postgres-docker.md`.
 
-**3. Correr los paquetes SSIS**
-Abrir el proyecto `ProyectoETL_DM_Kimball/DatamartNorthwind/` en Visual Studio y ejecutar `CargaMaster.dtsx`.
+---
 
-**4. Abrir el reporte**
-Abrir `PowerBi/Visualizacion_Datamart_Nortwind.pbix` en Power BI Desktop.
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563eb,50:0891b2,100:0f766e&height=100&section=footer&animation=fadeIn"/>
+
+</div>
